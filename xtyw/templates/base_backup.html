@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/css/bootstrap.min.css" >
+<link rel="stylesheet" href="/static/css/devops.css" >
+<link rel="stylesheet" href="/static/js/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/js/messages_zh.min.js"></script>
+<script type="text/javascript" src="/static/js/ylzdc.js"></script>
+{% block css %} {% endblock %}
+
+
+<!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    
+{% block title %}
+<title>主页</title>
+{% endblock %}
+</head>
+
+<body>
+<!--header-->
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand brand" href="#"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">首页</a></li>
+        <li><a href="#">解决方案</a></li>
+        
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">服务<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">集团服务</a></li>
+            <li class="divider"></li>
+            <li><a href="#">对分公司服务</a></li>
+            <li class="divider"></li>
+            <li><a href="#">对外业务</a></li>
+          </ul>
+        </li>
+        
+       
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">数据中心<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">维保管理</a></li>
+             <li class="divider"></li>
+            <li><a href="#">资源管理</a></li>
+            <li class="divider"></li>
+            <li><a href="#">配置管理</a></li>
+            <li class="divider"></li>
+            <li><a href="#">监控管理</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="#">测试平台</a></li>
+        <li><a href="#">统计报表</a></li>
+        <li><a href="#">系统管理</a></li>
+       
+      </ul>
+   </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- /container --> 
+
+
+
+<div class="container">
+  <div class="col-md-12" style="padding-bottom: 65px;">
+	{% block content_span12 %}
+
+        <div class="col-md-2">
+	    {% block content_left %}
+	    {% endblock %}
+        </div>
+	    
+	<div class="col-md-8">
+	    {% block content_middle %}
+	    {% endblock %}
+	</div>
+	<div class="col-md-2">
+	    {% block content_right %}
+	    {% endblock %}
+	</div>
+	{% endblock %}
+  </div>
+</div>
+<!--footer
+<div class="row" id="footer">
+  <div class="col-md-12">
+  <footer>
+  <ul class="list-inline">
+    <li><a href="javascript:">联系我们 |</a></li>
+    <li><a href="javascript:">在线客服 |</a></li>
+    <li><a href="javascript:">网站导航>></a></li>
+  </ul>
+  <div>易联众 &copy;2010 ylzinfo.com&nbsp;&nbsp;All rights reserved &nbsp;&nbsp;闽ICP备05020898</div>
+  <address>
+  地址：厦门思明软件园观日路18号502&nbsp;&nbsp; <abbr title="Phone">电话：</abbr>0592-2517033&nbsp;&nbsp; <a href="mailto:#">传真：</a>0592-2517008
+  </address>
+  </footer>
+ </div>
+</div>
+-->
+</body>
+</html>
+
+{% block scripts %} {% endblock %}

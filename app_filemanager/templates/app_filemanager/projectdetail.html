@@ -1,0 +1,22 @@
+{% extends "app_filemanager/index.html" %}
+
+{% block content_middle %}
+<dl class="dl-horizontal">
+      <dt>项目名</dt>
+      <dd>{{project.name}}</dd>
+      <dt>公开</dt>
+      <dd><kbd>{{ project.public }}</kbd></h1>
+      <dt>添加日期</dt>
+      <dd>{{ project.add_date }}</dd>
+      <dt>修改日期</dt>
+      <dd>{{ project.end_data }}</dd>
+      <dt>添加人</dt>
+      <dd>{{ project.added_by }}</dd>
+      <dt>描述</dt>
+      <dd>{{ project.desc }}</dd>
+      <dt>操作</dt>
+      <dd><a href="" class="btn btn-default" role="button">删除</a>
+          <a href="{% url 'file:projectupdate' project.id %}" class="btn btn-default" role="button">编辑</a>
+          <a href="" class="btn btn-default" role="button">返回</a></dd>
+</dl>
+{% endblock %}

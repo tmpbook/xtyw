@@ -1,0 +1,25 @@
+{% extends "app_filemanager/index.html" %}
+
+{% block content_middle %}
+<dl class="dl-horizontal">
+      <dt>文件名</dt>
+      <dd>{{file.file.name|slice:"7:"}}</dd>
+      <dt>大小</dt>
+      <dd><kbd>{{ file.file.size|filesizeformat }}</kbd></h1>
+      <dt>类型</dt>
+      <dd>{{ file_type|default_if_none:"未识别"}}</dd>
+      <dt>上传日期</dt>
+      <dd>{{ file.upload_date }}</dd>
+      <dt>上次修改</dt>
+      <dd>{{ file.change_date }}</dd>
+      <dt>描述</dt>
+      <dd>{{ file.desc }}</dd>
+      <dt>操作</dt>
+      <dd><a href="{% url 'file:download' file.id %}" class="btn btn-default" role="button">下载</a>
+	  <a href="{% url 'file:listPersonal' %}" class="btn btn-default disabled" role="button">删除</a>
+	  <a href="{% url 'file:fileupdate' file.id %}" class="btn btn-default" role="button">编辑</a>
+	  <a href="{% url 'file:listPersonal' %}" class="btn btn-default" role="button">返回</a>
+      </dd>
+
+</dl>
+{% endblock %}

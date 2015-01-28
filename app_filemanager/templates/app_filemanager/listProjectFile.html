@@ -1,0 +1,56 @@
+{% extends "app_filemanager/listProject.html" %}
+
+{% block content_middle %}
+<h2>{{ theproject.name }}</h2>
+<hr>
+							{% if projectFiles %}
+									    <table class="table table-hover table-condensed table-striped">
+										<thead>
+											<tr>
+												<th>
+												</th>
+												<th>
+													文件名
+												</th>
+												<th>
+													上传于
+												</th>
+												<th>
+													项目
+												</th>
+ 												<th>
+													操作 
+												</th>
+
+
+											</tr>
+										</thead>
+										<tbody>
+							    {% for file in projectFiles %}
+											<tr>
+												<td>
+													{{ forloop.counter }}
+												</td>
+												<td>
+													{{ file.file.name|slice:"7:" }}
+												</td>
+												<td>
+													{{ file.upload_date|timesince }}&nbsp;前
+												</td>
+												<td>
+													{{ file.project|default:"无" }}
+												</td>
+												<td>
+													<a href="{% url 'file:filedetail' file.id %}">更多</a>
+													<a href="{% url 'file:listProject' %}">返回</a>
+												</td>
+
+
+											</tr>
+							    {% endfor %}
+										</tbody>
+									</table>
+							{% else %}
+							  <p>No files are in database.</p>
+							{% endif %}
+{% endblock %}

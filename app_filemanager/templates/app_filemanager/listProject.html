@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}
+<title>项目文档</title>
+{% endblock %}
+
+{% block content_left %}
+
+<ul class="list-group">
+{% for p in publicprojects %}
+      <div class="list-group-item">
+        <span class="badge">{{ p.projects__count }}</span>
+        <a href="{% url 'file:listProjectfile' p.id %}">{{ p.name }}</a>
+      </div>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+{% block content_middle %}
+							{% if publicprojects %}
+									    <table class="table table-hover table-condensed table-striped">
+										<thead>
+											<tr>
+												<th>
+													#
+												</th>
+												<th>
+													项目名
+												</th>
+												<th>
+													添加时间
+												</th>
+												<th>
+													添加人
+												</th>
+												<th>
+													操作 
+												</th>
+
+
+											</tr>
+										</thead>
+										<tbody>
+										{% for p in publicprojects %}
+											<tr>
+												<td>
+													{{ forloop.counter }}
+												</td>
+												<td>
+													{{ p.name }}
+												</td>
+												<td>
+													{{ p.add_date|timesince }}&nbsp;前
+												</td>
+												<td>
+													{{ p.added_by|default:"无" }}
+												</td>
+												<td>
+													<a href="{% url "file:projectdetail" p.id %}">详情</a>	
+												</td>
+											</tr>
+										{% endfor %}
+									</table>
+							{% else %}
+								No project in database.
+							{% endif %}
+{% endblock %}
+
+{% block content_right %}
+<div>
+最近上传:
+<hr>
+{% for f in recentUploadFile %}
+<address>
+  <strong style="word-break:break-all">{{ f.file.name|slice:"7:" }}</strong><br>
+  所属项目：{{ f.project }}<br>
+  上传时间：{{ f.upload_date }}<br>
+  <abbr title="Permited"><a href="{% url "file:download" f.id %}">Download</a></abbr>&nbsp;&nbsp;<!--<abbr title="Permited"><a href="{% url "file:filedetail" f.id %}">Detail</a></abbr>-->
+</address>
+{% endfor %}
+</div>
+{% endblock %}

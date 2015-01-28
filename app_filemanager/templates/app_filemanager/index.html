@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Welcome</title>
+{% endblock %}
+{% block content_middle %}
+<!--电视屏幕-->
+        <div class="jumbotron">
+				<h1>
+					Welcome!
+				</h1>
+				<p>
+					用户:吴昊，高远，胡月，周洁，乔莹，朱鼎，黄宇航，涂明杰，刘舜
+				</p>
+				<p>
+					组:运维组、开发组
+				</p>
+				<p>
+					项目API：http://192.168.46.5/api/project/?format=json	
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="#">Learn more</a>
+				</p>
+	</div>
+<!--电视屏幕-->
+<!--三个小屏幕-->
+	<div class="row clearfix">
+		<div class="col-md-4 column">
+			<h2>
+				个人
+			</h2>
+			<p>
+				文档数目：{{ privateFiles }}个<br>
+				只有自己能查看并下载
+			</p>
+			<p>
+				<a class="btn btn-success" href="{% url "file:listPersonal" %}">View details »</a>
+			</p>
+		</div>
+		<div class="col-md-4 column">
+			<h2>
+				共享
+			</h2>
+			<p>
+				文档数目：{{ publicFiles }}个<br>
+				所有人可以查看、下载
+			</p>
+			<p>
+				<a class="btn btn-success" href="#">View details »</a>
+			</p>
+		</div>
+		<div class="col-md-4 column">
+			<h2>
+				项目
+			</h2>
+			<p>
+				当前发布的项目数量：{{ allProjects }}个<br>
+			      	项目文档数量: {{ projectFiles }}
+			</p>
+			<p>
+				<a class="btn btn-success" href="#">View details »</a>
+			</p>
+                </div>
+        </div>
+<!--三个小屏幕-->
+
+{% endblock %}
