@@ -16,9 +16,9 @@
       <dd>{{ file.desc }}</dd>
       <dt>操作</dt>
       <dd><a href="{% url 'file:download' file.id %}" class="btn btn-default" role="button">下载</a>
-	  <a href="{% url 'file:listPersonal' %}" class="btn btn-default disabled" role="button">删除</a>
+	  <a href="{% url 'file:deletefile' file.id %}" class="btn btn-default" role="button">删除</a>
 	  <a href="{% url 'file:fileupdate' file.id %}" class="btn btn-default" role="button">编辑</a>
-	  <a href="{% url 'file:listPersonal' %}" class="btn btn-default" role="button">返回</a>
+<!--	  <a href="{% url 'file:listPersonal' %}" class="btn btn-default" role="button">返回</a>-->
       </dd>
 
 </dl>

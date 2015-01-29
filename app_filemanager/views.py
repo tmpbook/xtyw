@@ -5,7 +5,7 @@ import datetime
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404, HttpResponse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -117,7 +117,11 @@ def GlobleView(request):
         'recentUploadFile': recentUploadFile,
     }
     
+def ListAllProjectFileView(request):
+    allprojectfile = File.projectFiles.all().order_by('-upload_date')
+    return render_to_response('app_filemanager/listAllProjectFile.html', context_instance=RequestContext(request,locals()))
 def ListProjectFileView(request, project_id):
+    activePublicList = "active"
     theproject = Project.publicProjects.get(id=project_id)
     projectFiles = File.projectFiles.filter(project = project_id).order_by('-upload_date')
     dict = {}
@@ -198,6 +202,10 @@ class ProjectUpdateView(UpdateView):
     permission_required = 'app_filemanager.can_change_file'
     permission_fail_message = ('You don\'t have permission to change employee info.')
     form_class = ProjectForm
+
+class DeleteFileView(DeleteView):
+    model = File
+    success_url = '/file/list/personal/'
 """
 def SearchView(request):
     if not request.user.has_perm('app_filemanager.can_see'):

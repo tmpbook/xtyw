@@ -11,6 +11,7 @@ urlpatterns=patterns('',
     # list file & project
     url(r'^list/personal/$', views.ListPersonalView, name='listPersonal'),
     url(r'^list/project/$', views.ListProjectView, name='listProject'),
+    url(r'^list/allprojectfile/$', views.ListAllProjectFileView, name='listAllProjectFile'),
     # detail file & project
     url(r'^detail/fileid=(?P<file_id>\d+)/$', views.FileDetailView, name='filedetail'), 
     url(r'^detail/projectid=(?P<project_id>\d+)/$', views.ProjectDetailView, name='projectdetail'),
@@ -21,5 +22,7 @@ urlpatterns=patterns('',
     url(r'^list/projectfile/projectid=(?P<project_id>\d+)$', views.ListProjectFileView, name='listProjectfile'),
     # down file
     url(r'^download/fileid=(?P<file_id>\d+)/$',views.DownloadView,name='download'), 
+    # delete file
+    url(r'^delete/fileid=(?P<pk>\d+)/$', views.DeleteFileView.as_view(), name='deletefile'),
     #url(r'search/$',views.SearchView, name='search'), 
 )
