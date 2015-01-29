@@ -5,7 +5,7 @@ import datetime
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404, HttpResponse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -167,7 +167,11 @@ def LogoutView(request):
 @login_required
 def UserProfileView(request):
     return render_to_response('app_filemanager/userprofile.html', context_instance=RequestContext(request,locals()))
-
+# -------------------------------create
+class ProjectCreateView(CreateView):
+    model = Project
+    success_url = '/file/list/project/'
+# -------------------------------update
 class FileUpdateView(UpdateView):
     model = File
     template_name_suffix = '_update_form'
@@ -182,9 +186,10 @@ class FileUpdateView(UpdateView):
         })
         return kwargs
 
-    def get_queryset(self):
-        base_qs = super(FileUpdateView, self).get_queryset()
-        return base_qs.filter(uploader=self.request.user)
+    # 一下代码是限制只能修改本人上传的文件
+    #def get_queryset(self):
+    #    base_qs = super(FileUpdateView, self).get_queryset()
+    #    return base_qs.filter(uploader=self.request.user)
 
 class ProjectUpdateView(UpdateView):
     model = Project

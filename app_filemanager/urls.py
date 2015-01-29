@@ -5,6 +5,8 @@ from app_filemanager import views
 
 urlpatterns=patterns('',
     url(r'^$',views.IndexView, name='index'),
+    # create file & project
+    url(r'^create/project/$', views.ProjectCreateView.as_view(), name='createproject'),
     url(r'^upload/$', views.UploadView, name='upload'), 
     # list file & project
     url(r'^list/personal/$', views.ListPersonalView, name='listPersonal'),

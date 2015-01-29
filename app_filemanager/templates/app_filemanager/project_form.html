@@ -1,0 +1,9 @@
+{% extends "app_filemanager/listProjectFile.html" %}
+
+{% block content_middle %}
+<h2>项目添加:</h2>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+{% endblock %}

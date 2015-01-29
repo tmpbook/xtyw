@@ -17,6 +17,6 @@
       <dt>操作</dt>
       <dd><a href="" class="btn btn-default" role="button">删除</a>
           <a href="{% url 'file:projectupdate' project.id %}" class="btn btn-default" role="button">编辑</a>
-          <a href="" class="btn btn-default" role="button">返回</a></dd>
+          <a href="{% url 'file:listProject' %}" class="btn btn-default" role="button">返回</a></dd>
 </dl>
 {% endblock %}

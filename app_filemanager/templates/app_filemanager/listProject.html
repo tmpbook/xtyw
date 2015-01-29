@@ -17,6 +17,7 @@
 {% endblock %}
 
 {% block content_middle %}
+<h1>项目管理:</h1>
 							{% if publicprojects %}
 									    <table class="table table-hover table-condensed table-striped">
 										<thead>
@@ -64,6 +65,7 @@
 							{% else %}
 								No project in database.
 							{% endif %}
+<a href="{% url 'file:createproject' %}" class="btn btn-success">添加</a>
 {% endblock %}
 
 {% block content_right %}
