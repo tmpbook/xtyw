@@ -74,7 +74,7 @@
 <hr>
 {% for f in recentUploadFile %}
 <address>
-  <strong style="word-break:break-all">{{ f.file.name|slice:"7:" }}</strong><br>
+  <strong style="word-break:break-all">{{ f.file.name }}</strong><br>
   所属项目：{{ f.project }}<br>
   上传时间：{{ f.upload_date }}<br>
   <abbr title="Permited"><a href="{% url "file:download" f.id %}">Download</a></abbr>&nbsp;&nbsp;<!--<abbr title="Permited"><a href="{% url "file:filedetail" f.id %}">Detail</a></abbr>-->

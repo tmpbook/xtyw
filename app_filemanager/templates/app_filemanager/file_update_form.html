@@ -1,7 +1,60 @@
 {% extends "base.html" %}
 {% block content_middle %}
 <form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
+        <li>
+          <label for="id_project">{{ form.project.label }}</label>
+          {{ form.project.errors }}</ul>
+          {{ form.project }}
+        </li>
+        <li>
+          <label for="id_tag">{{ form.tag.label }}</label>
+          {{ form.tag.errors }}
+          {{ form.tag }}
+          <span class="helptext">{{ form.tag.help_text }}</span>
+        <a href="/admin/app_filemanager/tag/add/" class="add-another" id="add_id_tag" onclick="return showAddAnotherPopup(this);"> <img src="/static/admin/img/icon_addlink.gif" width="10" height="10" alt="Add Another"/>    </a>
+        </li>
+        <li>
+          <label for="id_group">{{ form.group.label }}</label>
+          {{ form.group }}
+          {{ form.group.errors }}
+          <span class="helptext">{{ form.group.help_text }}</span>
+        </li>
+        <li>
+          <label id="id_desc">{{ form.desc.label }}</label>
+          {{ form.desc.errors }}
+          {{ form.desc }}
+          <span class="helptext">{{ form.desc.help_text }}</span>
+        </li>
+        <!--<li>
+        <label for="id_file">{{ form.file.label }}</label>
+                             {{ form.file }}
+        <span class="helptext">{{ form.file.help_text }}</span>
+        </li>-->
+        <li>
+          <label class="id_public">{{ form.public.label }}<label>
+          {{ form.public }}
+        </li>
     <input type="submit" class="btn btn-default" value="Update" />
 </form>
+<style type="text/css">
+    ul.errorlist {
+        margin: 0;
+        padding: 0;
+    }
+    .errorlist li {
+        background-color: red;
+        color: white;
+        display: block;
+        font-size: 12px;
+        margin: 0 0 3px;
+        padding: 4px 5px;
+    }
+    .helptext {
+        font-size: 10px !important;
+        color: #999;
+    }
+    label {
+        color: #0C3C26;
+    }
+</style>
 {% endblock %}

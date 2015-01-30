@@ -64,8 +64,13 @@ class ProjectFileManager(models.Manager):
     def get_queryset(self):
         return super(ProjectFileManager, self).get_queryset().filter(deleted=False, project__isnull=False)
 
+from django.template.defaultfilters import slugify
 class File(models.Model):
-    file = models.FileField(upload_to='medias')
+    def makefilename(instance, filename):
+        fname, dot, extension = filename.rpartition('.')
+        slug = slugify(fname)
+        return '%s.%s' % (slug, extension)
+    file = models.FileField(upload_to=makefilename)
     public = models.BooleanField()# has default
     project = models.ForeignKey(Project, related_name="projects", blank=True, null=True)
     tag = models.ForeignKey(Tag, related_name="tags")
