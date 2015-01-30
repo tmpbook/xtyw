@@ -118,6 +118,7 @@ def GlobleView(request):
     }
     
 def ListAllProjectFileView(request):
+    activePublicList = "active"
     allprojectfile = File.projectFiles.all().order_by('-upload_date')
     return render_to_response('app_filemanager/listAllProjectFile.html', context_instance=RequestContext(request,locals()))
 def ListProjectFileView(request, project_id):
