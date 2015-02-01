@@ -1,5 +1,10 @@
 {% extends "base.html" %}
-
+{% block content_left %}
+<div class="alert alert-success alert-dismissable">
+	 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				 <strong>注意!</strong> 项目可以为空，但是如果选择了项目那么所有人可见，可下载 
+</div>
+{% endblock %}
 {% block content_middle %}
 <!--<div class="alert alert-success alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -11,11 +16,6 @@
     <form method="post">
 {% endif %}
 {% csrf_token %}
-
-<div class="alert alert-success alert-dismissable">
-	 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				 <strong>注意!</strong> 项目可以为空，但是如果选择了项目那么所有人可见，可下载 
-</div>
 
 <div class="form-group">
 	<li>
