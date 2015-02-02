@@ -19,7 +19,7 @@
 
 <div class="form-group">
 	<li>
-	  <label for="id_project">{{ form.project.label }}</label>
+	  <label for="id_project">{{ form.project.label }}</label><a type="button" class="btn" href="{% url "file:listProject" %}">项目管理</a>
 	  {{ form.project.errors }}</ul>
 	  {{ form.project }}
 	</li>

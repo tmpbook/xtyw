@@ -9,7 +9,7 @@
 {% for p in publicprojects %}
       <div class="list-group-item">
         <span class="badge">{{ p.projects__count }}</span>
-        <a href="{% url 'file:listProjectfile' p.id %}">{{ p.name }}</a>
+        <abbr title="{{ p.desc }}"><a href="{% url 'file:listProjectfile' p.id %}">{{ p.name }}</a></abbr>
       </div>
 {% endfor %}
 </ul>

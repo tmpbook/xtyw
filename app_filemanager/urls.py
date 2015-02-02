@@ -12,6 +12,7 @@ urlpatterns=patterns('',
     url(r'^list/personal/$', views.ListPersonalView, name='listPersonal'),
     url(r'^list/project/$', views.ListProjectView, name='listProject'),
     url(r'^list/allprojectfile/$', views.ListAllProjectFileView, name='listAllProjectFile'),
+    url(r'^list/allpublicfile/$', views.ListPublicFileView, name='listPublicFile'),
     # detail file & project
     url(r'^detail/fileid=(?P<file_id>\d+)/$', views.FileDetailView, name='filedetail'), 
     url(r'^detail/projectid=(?P<project_id>\d+)/$', views.ProjectDetailView, name='projectdetail'),

@@ -130,6 +130,11 @@ def ListProjectFileView(request, project_id):
         o.active_field = "active"
     return render_to_response('app_filemanager/listProjectFile.html', context_instance=RequestContext(request,locals()))
 
+def ListPublicFileView(request):
+    activePublicList = "active"
+    publicFiles = File.publicFiles.all().order_by('-upload_date')
+    return render_to_response('app_filemanager/listPublicFile.html', context_instance=RequestContext(request,locals()))
+
 # -----------------------------detail-------------
 def FileDetailView(request, file_id):
     file = get_object_or_404(File, pk=file_id)
