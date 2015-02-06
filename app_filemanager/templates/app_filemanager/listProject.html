@@ -1,24 +1,27 @@
 {% extends "base.html" %}
+{% block script %}
+
+{% endblock %}
 {% block title %}
 <title>项目文档</title>
 {% endblock %}
 
 {% block content_left %}
-
-<ul class="list-group">
-{% for p in publicprojects %}
-      <div class="list-group-item">
-        <span class="badge">{{ p.projects__count }}</span>
-        <abbr title="{{ p.desc }}"><a href="{% url 'file:listProjectfile' p.id %}">{{ p.name }}</a></abbr>
-      </div>
-{% endfor %}
-</ul>
-
+	<input id="search" class="form-control"  name="search" placeholder="项目名或者文档数" type="text" data-toggle="hideseek" data-list=".list-group">
+	<br>
+	<ul class="list-group">
+	{% for p in publicprojects %}
+	      <div class="list-group-item" project_name="{{ p.name }}" file_count="{{ p.projects__count }}">
+		<span class="badge">{{ p.projects__count }}</span>
+		<abbr title="{{ p.desc }}"><a href="{% url 'file:listProjectfile' p.id %}">{{ p.name }}</a></abbr>
+	      </div>
+	{% endfor %}
+	</ul>
 {% endblock %}
 
 {% block content_middle %}
 <h1>项目管理:</h1>
-							{% if publicprojects %}
+							{% if allProjects %}
 									    <table class="table table-hover table-condensed table-striped">
 										<thead>
 											<tr>
@@ -32,7 +35,7 @@
 													添加时间
 												</th>
 												<th>
-													添加人
+													公开	
 												</th>
 												<th>
 													操作 
@@ -42,7 +45,7 @@
 											</tr>
 										</thead>
 										<tbody>
-										{% for p in publicprojects %}
+										{% for p in allProjects %}
 											<tr>
 												<td>
 													{{ forloop.counter }}
@@ -54,7 +57,7 @@
 													{{ p.add_date|timesince }}&nbsp;前
 												</td>
 												<td>
-													{{ p.added_by|default:"无" }}
+													{{ p.public|default:"否" }}
 												</td>
 												<td>
 													<a href="{% url "file:projectdetail" p.id %}">详情</a>	

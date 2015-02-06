@@ -1,0 +1,54 @@
+{% extends "app_filemanager/listProject.html" %}
+
+{% block content_middle %}
+<h2>搜索结果：{{ text }}</h2>
+<hr>
+							{% if searchFiles %}
+									    <table class="table table-hover table-condensed table-striped">
+										<thead>
+											<tr>
+												<th>
+												</th>
+												<th>
+													文件名
+												</th>
+												<th>
+													上传于
+												</th>
+												<th>
+													项目
+												</th>
+ 												<th>
+													操作 
+												</th>
+
+
+											</tr>
+										</thead>
+										<tbody>
+							    {% for file in searchFiles %}
+											<tr>
+												<td>
+													{{ forloop.counter }}
+												</td>
+												<td>
+													{{ file.file.name|slice:"7:" }}
+												</td>
+												<td>
+													{{ file.upload_date|timesince }}&nbsp;前
+												</td>
+												<td>
+													{{ file.project|default:"无" }}
+												</td>
+												<td>
+													<a href="{% url 'file:filedetail' file.id %}">更多</a>
+													<a href="{% url 'file:listProject' %}">返回</a>
+												</td>
+
+
+											</tr>
+							    {% endfor %}
+										</tbody>
+							</table>
+{% endif %}					
+{% endblock %}

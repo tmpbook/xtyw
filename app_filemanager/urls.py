@@ -25,5 +25,5 @@ urlpatterns=patterns('',
     url(r'^download/fileid=(?P<file_id>\d+)/$',views.DownloadView,name='download'), 
     # delete file
     url(r'^delete/fileid=(?P<pk>\d+)/$', views.DeleteFileView.as_view(), name='deletefile'),
-    #url(r'search/$',views.SearchView, name='search'), 
+    url(r'search/$',views.SearchView, name='search'), 
 )

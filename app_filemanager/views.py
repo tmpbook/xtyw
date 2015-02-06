@@ -105,7 +105,7 @@ def ListProjectView(request):
         user_name = request.user.id
         # 为publicprojects附加一个projects__count对象来获得每个project有几个File
         # 返回公开的项目的queryset
-        publicprojects = Project.publicProjects.all().annotate(Count('projects'))
+        allProjects = Project.allProjects.all().annotate(Count('projects'))
         recentUploadFile = File.projectFiles.all().order_by('-upload_date')[:4]
     return render_to_response('app_filemanager/listProject.html', context_instance=RequestContext(request,locals()))
 
@@ -212,6 +212,16 @@ class ProjectUpdateView(UpdateView):
 class DeleteFileView(DeleteView):
     model = File
     success_url = '/file/list/personal/'
+
+def SearchView(request):
+    #if not request.user.has_perm('app_filemanager.can_see'):
+    #    return render_to_response('app_filemanager/noperm.html', context_instance=RequestContext(request,locals()))
+    #else:
+    text = request.GET.get('searchtext', '')
+    user_id = request.user.id
+    #file = get_list_or_404(File,file__icontains=text, uploader=user_id)
+    searchFiles = File.allFiles.filter(file__icontains=text)
+    return render_to_response('app_filemanager/searchResult.html', context_instance=RequestContext(request,locals()))
 """
 def SearchView(request):
     if not request.user.has_perm('app_filemanager.can_see'):

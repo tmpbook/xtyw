@@ -1,6 +1,6 @@
 // JavaScript Document
 
- $(document).ready(function() {
+ $(documene).ready(function() {
    
    var docHeight = $(window).height();
    var footerHeight = $('#footer').height();
@@ -11,3 +11,6 @@
    }
   });
 
+$(document).ready(function() {
+    $('#search').hideseek();
+});
