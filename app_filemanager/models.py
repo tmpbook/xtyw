@@ -1,6 +1,8 @@
 #coding=utf8
 from django.db import models
 from django.contrib.auth.models import User, Group
+from django.db.models import Sum 
+from django.template.defaultfilters import slugify
 # 类顺序不可改变
 class AllProjectManager(models.Manager):
     def get_queryset(self):
@@ -51,6 +53,9 @@ class Tag(models.Model):
 class AllFileManager(models.Manager):
     def get_queryset(self):
         return super(AllFileManager, self).get_queryset().all()
+    def get_size_sum(self):
+        return super(AllFileManager, self).get_queryset().all().aggregate(Sum('file_size'))
+
 
 class PrivateFileManager(models.Manager):
     def get_queryset(self):
@@ -64,7 +69,9 @@ class ProjectFileManager(models.Manager):
     def get_queryset(self):
         return super(ProjectFileManager, self).get_queryset().filter(deleted=False, project__isnull=False)
 
-from django.template.defaultfilters import slugify
+
+
+
 class File(models.Model):
     def makefilename(instance, filename):
         fname, dot, extension = filename.rpartition('.')
@@ -80,6 +87,7 @@ class File(models.Model):
     desc = models.TextField(blank=True, null=True)
     upload_date = models.DateTimeField(auto_now_add=True)
     change_date = models.DateTimeField(auto_now=True)
+    file_size = models.PositiveIntegerField()
     
     # Managers blow:
     allFiles = AllFileManager()
@@ -90,6 +98,9 @@ class File(models.Model):
 
     def __unicode__(self):
         return self.file.name
+    def save(self, *args, **kwargs):
+        self.file_size = self.file.size
+        super(File, self).save(*args, **kwargs)
     class Meta:
         permissions = (
             ("can_edit_file", "能编辑文件"),

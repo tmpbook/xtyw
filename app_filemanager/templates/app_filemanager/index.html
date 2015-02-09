@@ -4,11 +4,14 @@
 {% endblock %}
 {% block content_middle %}
 <!--电视屏幕-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
         <div class="jumbotron">
-				<p>
-					项目API：http://192.168.46.5/api/project/?format=json	
-				</p>
-
+	
 <!--				<h1>
 					Welcome!
 				</h1>
@@ -22,20 +25,18 @@
 					<a class="btn btn-primary btn-large" href="#">Learn more</a>
 				</p>
 -->
-	</div>
-<!--电视屏幕-->
-<!--三个小屏幕-->
 	<div class="row clearfix">
 		<div class="col-md-4 column">
 			<h2>
-				个人
+				统计	
 			</h2>
 			<p>
-				文档数目：{{ privateFiles }}个<br>
-				只有自己能查看并下载
+				数目：{{ allFiles }}个<br>
+				总大小：	
+				{{ allSize.file_size__sum|filesizeformat }}
 			</p>
 			<p>
-				<a class="btn btn-success" href="{% url "file:listPersonal" %}">View details »</a>
+				<a class="btn btn-success" href="{% url "file:listPersonal" %}">详情 »</a>
 			</p>
 		</div>
 		<div class="col-md-4 column">
@@ -47,7 +48,7 @@
 				所有人可以查看、下载
 			</p>
 			<p>
-				<a class="btn btn-success" href="#">View details »</a>
+				<a class="btn btn-success" href="{% url 'file:listPublicFile' %}">详情 »</a>
 			</p>
 		</div>
 		<div class="col-md-4 column">
@@ -55,14 +56,18 @@
 				项目
 			</h2>
 			<p>
-				当前发布的项目数量：{{ allProjects }}个<br>
+				项目数量：{{ allProjects }}个<br>
 			      	项目文档数量: {{ projectFiles }}
 			</p>
 			<p>
-				<a class="btn btn-success" href="{% url 'file:listAllProjectFile' %}">View details »</a>
+				<a class="btn btn-success" href="{% url 'file:listAllProjectFile' %}">详情 »</a>
 			</p>
                 </div>
         </div>
+
+	</div>
+<!--电视屏幕-->
+<!--三个小屏幕-->
 <!--三个小屏幕-->
 
 {% endblock %}

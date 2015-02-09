@@ -22,16 +22,17 @@ import mimetypes
 @login_required
 def IndexView(request):
     activeIndex = "active"
-    user_id = request.user.id
     # 从个人文档中筛选出上传者和当前用户一致的文档
-    privateFiles = File.privateFiles.filter(
-        uploader__id=user_id
-    ).count()
+    user_id = request.user.id
+    # 所有文档个数
+    allFiles = File.allFiles.count()
+    # 所有公开文档总量
     publicFiles = File.publicFiles.count()
-    # 个人文档总量
-    allPrivateFiles = File.privateFiles.count()
-    # 项目总量和项目文档总量
+    # 所有公开文档的大小总和
+    allSize = File.allFiles.get_size_sum()
+    # 项目个数
     allProjects = Project.allProjects.count()
+    # 项目文档数
     projectFiles = File.projectFiles.count()# 项目ID不为空则是项目文件
     #allFiles = File.publicFiles.filter(project__id=u'').count()
     return render_to_response('app_filemanager/index.html', context_instance=RequestContext(request,locals()))
@@ -140,6 +141,10 @@ def FileDetailView(request, file_id):
     file = get_object_or_404(File, pk=file_id)
     file_type=mimetypes.guess_type(file.file.url)[0]
     return render_to_response('app_filemanager/filedetail.html', context_instance=RequestContext(request,locals()))
+def FileDetailView_no_edit(request, file_id):
+    file = get_object_or_404(File, pk=file_id)
+    file_type=mimetypes.guess_type(file.file.url)[0]
+    return render_to_response('app_filemanager/filedetail_no_edit.html', context_instance=RequestContext(request,locals()))
 
 def ProjectDetailView(request, project_id):
     project = get_object_or_404(Project, pk=project_id)
@@ -196,10 +201,10 @@ class FileUpdateView(UpdateView):
         })
         return kwargs
 
-    # 一下代码是限制只能修改本人上传的文件
-    #def get_queryset(self):
-    #    base_qs = super(FileUpdateView, self).get_queryset()
-    #    return base_qs.filter(uploader=self.request.user)
+    # 限制只能修改本人上传的文件
+    def get_queryset(self):
+        base_qs = super(FileUpdateView, self).get_queryset()
+        return base_qs.filter(uploader=self.request.user)
 
 class ProjectUpdateView(UpdateView):
     model = Project

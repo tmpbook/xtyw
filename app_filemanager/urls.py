@@ -15,6 +15,7 @@ urlpatterns=patterns('',
     url(r'^list/allpublicfile/$', views.ListPublicFileView, name='listPublicFile'),
     # detail file & project
     url(r'^detail/fileid=(?P<file_id>\d+)/$', views.FileDetailView, name='filedetail'), 
+    url(r'^detail/fileid_no_edit=(?P<file_id>\d+)/$', views.FileDetailView_no_edit, name='filedetail_no_edit'), 
     url(r'^detail/projectid=(?P<project_id>\d+)/$', views.ProjectDetailView, name='projectdetail'),
     # update file & project
     url(r'^file/update/fileid=(?P<pk>\d+)/$', views.FileUpdateView.as_view(), name='fileupdate'),
