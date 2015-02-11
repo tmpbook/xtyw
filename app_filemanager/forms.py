@@ -68,7 +68,7 @@ class FileForm(forms.ModelForm):
     file = forms.FileField(
         required = True,
         label = "文档",
-        help_text = "大小限制为1G",
+        help_text = "大小限制为8G",
         error_messages = {'required': "请选择一个文件"},
     )
    

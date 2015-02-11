@@ -76,7 +76,10 @@ class File(models.Model):
     def makefilename(instance, filename):
         fname, dot, extension = filename.rpartition('.')
         slug = slugify(fname)
-        return '%s.%s' % (slug, extension)
+        # 这里的slug会屏蔽掉中文，所以直接用fname
+        return '%s.%s' % (fname, extension)
+        #return '%s.%s' % (slug, extension)
+    #file = models.FileField(upload_to='media')
     file = models.FileField(upload_to=makefilename)
     public = models.BooleanField()# has default
     project = models.ForeignKey(Project, related_name="projects", blank=True, null=True)
@@ -87,7 +90,7 @@ class File(models.Model):
     desc = models.TextField(blank=True, null=True)
     upload_date = models.DateTimeField(auto_now_add=True)
     change_date = models.DateTimeField(auto_now=True)
-    file_size = models.PositiveIntegerField()
+    file_size = models.BigIntegerField()
     
     # Managers blow:
     allFiles = AllFileManager()

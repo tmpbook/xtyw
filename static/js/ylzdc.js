@@ -1,16 +1,8 @@
 // JavaScript Document
-
- $(documene).ready(function() {
-   
-   var docHeight = $(window).height();
-   var footerHeight = $('#footer').height();
-   var footerTop = $('#footer').position().top + footerHeight;
-   
-   if (footerTop < docHeight) {
-    $('#footer').css('margin-top', 10 + (docHeight - footerTop) + 'px');
-   }
-  });
-
-$(document).ready(function() {
-    $('#search').hideseek();
-});
+$(document).keypress(function(event){
+  if(event.which === 109){
+    $('.dropdown').toggleClass('open');
+  };
+})
+// 当点击M键的时候，class增加一个"open"
+$(document).ready(pressm);
