@@ -33,7 +33,7 @@
 					{{ forloop.counter }}
 				</td>
 				<td>
-					{{ file.file.name }}
+					{{ file.file.name|truncatewords:"8" }}
 				</td>
 				<td>
 					{{ file.upload_date|timesince }}&nbsp;前

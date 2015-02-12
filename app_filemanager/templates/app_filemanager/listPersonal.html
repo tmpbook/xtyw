@@ -18,6 +18,7 @@
 							<thead>
 								<tr>
 									<th>
+										#
 									</th>
 									<th>
 										文件名
@@ -45,7 +46,7 @@
 										{{ forloop.counter }}
 									</td>
 									<td>
-										{{ file.file.name }}
+										{{ file.file.name|truncatewords:"8" }}
 									</td>
 									<td>
 										{{ file.upload_date|timesince }}&nbsp;前
@@ -79,6 +80,7 @@
 							<thead>
 								<tr>
 									<th>
+										#
 									</th>
 									<th>
 										文件名
@@ -106,7 +108,7 @@
 										{{ forloop.counter }}
 									</td>
 									<td>
-										{{ file.file.name }}
+										{{ file.file.name|truncatewords:"8" }}
 									</td>
 									<td>
 										{{ file.upload_date|timesince }}&nbsp;前
