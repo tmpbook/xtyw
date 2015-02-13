@@ -1,8 +1,9 @@
 {% extends "app_filemanager/listProject.html" %}
 
 {% block content_middle %}
-<h2>共享文档</h2>
+<h1><i>共享文档：</i></h1>
 <hr>
+<input id="search" class="form-control pull-right"  name="search" placeholder="过滤" type="text" data-toggle="hideseek" data-list=".table-publicfile">
 {% if publicFiles %}
 		    <table class="table table-hover table-condensed table-striped">
 			<thead>
@@ -26,7 +27,7 @@
 
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="table-publicfile">
     {% for file in publicFiles %}
 				<tr>
 					<td>
@@ -36,7 +37,7 @@
 						{{ file.file.name|truncatewords:"8" }}
 					</td>
 					<td>
-						{{ file.upload_date|timesince }}&nbsp;前
+						{{ file.upload_date|timesince|truncatewords:"2" }}&nbsp;前
 					</td>
 					<td>
 						{{ file.project|default:"无" }}

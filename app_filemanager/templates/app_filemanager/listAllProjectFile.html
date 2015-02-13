@@ -1,7 +1,8 @@
 {% extends "app_filemanager/listProject.html" %}
 
 {% block content_middle %}
-<h2 class='pull-left'>项目文档：</h2>
+<h1><i>项目文档：</i></h1>
+<hr>
 	<input id="search" class="form-control pull-right"  name="search" placeholder="过滤" type="text" data-toggle="hideseek" data-list=".table-projectfile">
 							{% if allprojectfile %}
 									    <table class="table table-hover table-condensed table-striped ">
@@ -23,21 +24,22 @@
  												<th>
 													操作 
 												</th>
-
+												
 
 											</tr>
 										</thead>
 										<tbody class= "table-projectfile">
 							    {% for file in allprojectfile %}
-											<tr>
+											<tr class="article">
 												<td>
 													{{ forloop.counter }}
 												</td>
-												<td>
+												<td class="has_desc">
 													{{ file.file.name|truncatewords:"8" }}
+													<div class="description" style="display:none"><h3><i>{{ file.desc|default:"无描述" }}</i></h3></div>
 												</td>
 												<td>
-													{{ file.upload_date|timesince }}&nbsp;前
+													{{ file.upload_date|timesince|truncatewords:"2" }}&nbsp;前
 												</td>
 												<td>
 													{{ file.project|default:"无" }}

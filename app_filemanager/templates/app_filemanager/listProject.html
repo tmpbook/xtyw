@@ -7,7 +7,8 @@
 {% endblock %}
 
 {% block content_left %}
-        <br>
+<i>项目:</i>
+<hr>
 	<input id="search" class="form-control"  name="search" placeholder="项目名或者文档数" type="text" data-toggle="hideseek" data-list=".list-group">
 	<br>
 	<ul class="list-group">
@@ -21,7 +22,7 @@
 {% endblock %}
 
 {% block content_middle %}
-<h1>项目管理:</h1>
+<h1><i>项目管理:</i></h1>
 							{% if allProjects %}
 									    <table class="table table-hover table-condensed table-striped">
 										<thead>
@@ -73,9 +74,8 @@
 {% endblock %}
 
 {% block content_right %}
-<br>
 <div>
-最近上传:
+<i>最近上传:</i>
 <hr>
 {% for f in recentUploadFile %}
 <address>

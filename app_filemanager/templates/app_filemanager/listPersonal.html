@@ -30,9 +30,6 @@
 										项目
 									</th>
 									<th>
-										公开 
-									</th>
-									<th>
 										操作 
 									</th>
 
@@ -49,16 +46,12 @@
 										{{ file.file.name|truncatewords:"8" }}
 									</td>
 									<td>
-										{{ file.upload_date|timesince }}&nbsp;前
+										{{ file.upload_date|timesince|truncatewords:"2" }}&nbsp;前
 									</td>
 									<td>
 										{{ file.project|default:"无" }}
 									</td>
 									<td>
-										{{ file.public }}
-									</td>
-									<td>
-										<a href="{% url 'file:download' file.id %}">下载</a>
 										<a href="{% url 'file:filedetail' file.id %}">更多</a>
 									</td>
 
@@ -92,9 +85,6 @@
 										项目
 									</th>
 									<th>
-										公开 
-									</th>
-									<th>
 										操作 
 									</th>
 
@@ -111,16 +101,12 @@
 										{{ file.file.name|truncatewords:"8" }}
 									</td>
 									<td>
-										{{ file.upload_date|timesince }}&nbsp;前
+										{{ file.upload_date|timesince|truncatewords:"2" }}&nbsp;前
 									</td>
 									<td>
 										{{ file.project|default:"无" }}
 									</td>
-									<td>
-										{{ file.public }}
-									</td>
 									<td>    
-										<a href="{% url 'file:download' file.id %}">下载</a>
 										<a href="{% url 'file:filedetail' file.id %}">更多</a>
 									</td>
 

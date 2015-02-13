@@ -24,7 +24,7 @@ class PublicProjctManager(models.Manager):
 Project.objects.get_public_project(user=user)
 """
 class Project(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     public = models.BooleanField(default=True)
     add_date = models.DateTimeField(auto_now_add=True)
     end_data = models.DateTimeField(auto_now=True)
