@@ -5,5 +5,12 @@
         padding-top: 70px;
 	padding-bottom:10px;
         font-family: Hiragino Sans GB;
-      }
-
+}
+.oneofthree { 
+        font-size:15px;
+}
+th {
+}	
+a {
+color: #33CC99; //这里设置超链接默认颜色
+}
