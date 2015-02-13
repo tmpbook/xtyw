@@ -29,12 +29,13 @@
 			</thead>
 			<tbody class="table-publicfile">
     {% for file in publicFiles %}
-				<tr>
+				<tr class="article">
 					<td>
 						{{ forloop.counter }}
 					</td>
-					<td>
+					<td class="has_desc">
 						{{ file.file.name|truncatewords:"8" }}
+						<div class="description" style="display:none"><h3><i>{{ file.desc|default:"无描述" }}</i></h3></div>
 					</td>
 					<td>
 						{{ file.upload_date|timesince|truncatewords:"2" }}&nbsp;前

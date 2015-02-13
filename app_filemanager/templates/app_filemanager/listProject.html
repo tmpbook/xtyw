@@ -48,12 +48,13 @@
 										</thead>
 										<tbody>
 										{% for p in allProjects %}
-											<tr>
+											<tr class="article">
 												<td>
 													{{ forloop.counter }}
 												</td>
-												<td>
+												<td class="has_desc">
 													{{ p.name }}
+													<div class="description" style="display:none"><h3><i>{{ p.desc|default:"无描述" }}</i></h3></div>
 												</td>
 												<td>
 													{{ p.add_date|timesince }}&nbsp;前
@@ -63,6 +64,7 @@
 												</td>
 												<td>
 													<a href="{% url "file:projectdetail" p.id %}">详情</a>	
+									
 												</td>
 											</tr>
 										{% endfor %}
