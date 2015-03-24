@@ -13,10 +13,18 @@
 	<br>
 	<ul class="list-group">
 	{% for p in publicprojects %}
-	      <div class="list-group-item" project_name="{{ p.name }}" file_count="{{ p.projects__count }}">
+	<!--
+		<div class="list-group-item" project_name="{{ p.name }}" file_count="{{ p.projects__count }}">
+		  <span class="badge">{{ p.projects__count }}</span>
+		  <abbr title="{{ p.desc }}"><a href="{% url 'file:listProjectfile' p.id %}">{{ p.name }}</a></abbr>
+		</div>
+	-->
+	{% if p.projects__count != 0 %}
+	<a href="{% url 'file:listProjectfile' p.id %}" class="list-group-item">
 		<span class="badge">{{ p.projects__count }}</span>
-		<abbr title="{{ p.desc }}"><a href="{% url 'file:listProjectfile' p.id %}">{{ p.name }}</a></abbr>
-	      </div>
+		<small>{{ p.name }}</small>
+	</a>
+	{% endif %}
 	{% endfor %}
 	</ul>
 {% endblock %}
