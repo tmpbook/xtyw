@@ -33,7 +33,7 @@
 <i class="oneofthree">项目管理:</i>
 <hr>
 							{% if allProjects %}
-									    <table class="table table-hover table-condensed table-striped">
+									    <table id='file' class="table table-hover table-condensed table-striped">
 										<thead>
 											<tr>
 												<th>
@@ -97,4 +97,7 @@
 </address>
 {% endfor %}
 </div>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript" src="/static/js/dataTables_yuan.js"></script>
 {% endblock %}

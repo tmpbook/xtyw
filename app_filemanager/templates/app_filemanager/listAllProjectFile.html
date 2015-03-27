@@ -3,9 +3,8 @@
 {% block content_middle %}
 <i class="oneofthree">项目文档：</i>
 <hr>
-	<input id="search" class="form-control pull-right"  name="search" placeholder="过滤" type="text" data-toggle="hideseek" data-list=".table-projectfile">
 							{% if allprojectfile %}
-									    <table class="table table-hover table-condensed table-striped ">
+									    <table id='file' class="table table-striped table-bordered" cellspacing="0" width="100%">
 
 										<thead>
 											<tr>
@@ -39,7 +38,7 @@
 													<div class="description" style="display:none"><h3><i>{{ file.desc|default:"无描述" }}</i></h3></div>
 												</td>
 												<td>
-													{{ file.upload_date|timesince|truncatewords:"2" }}&nbsp;前
+													{{ file.upload_date|timesince|truncatewords:"1" }}&nbsp;前
 												</td>
 												<td>
 													{{ file.project|default:"无" }}
