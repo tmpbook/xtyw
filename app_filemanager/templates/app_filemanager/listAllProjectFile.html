@@ -4,7 +4,7 @@
 <i class="oneofthree">项目文档：</i>
 <hr>
 							{% if allprojectfile %}
-									    <table id='file' class="table table-striped table-bordered" cellspacing="0" width="100%">
+									    <table id='file' class="table table-striped" cellspacing="0" width="100%">
 
 										<thead>
 											<tr>
@@ -16,9 +16,6 @@
 												</th>
 												<th>
 													上传于
-												</th>
-												<th>
-													项目
 												</th>
  												<th>
 													操作 
@@ -38,10 +35,7 @@
 													<div class="description" style="display:none"><h3><i>{{ file.desc|default:"无描述" }}</i></h3></div>
 												</td>
 												<td>
-													{{ file.upload_date|timesince|truncatewords:"3" }}&nbsp;前
-												</td>
-												<td>
-													{{ file.project|default:"无" }}
+													{{ file.upload_date|timesince }}&nbsp;前
 												</td>
 												<td>
 													<a href="{% url 'file:filedetail_no_edit' file.id %}">更多</a>
