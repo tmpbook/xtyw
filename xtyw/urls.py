@@ -7,10 +7,9 @@ entry_resource = ProjectResource()
 # -------------------------------------------------------
 admin.autodiscover()
 
-
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'xtyw.views.home', name='home'),
+    url(r'^$', views.IndexView, name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^api/', include(entry_resource.urls)),
     url(r'^admin/', include(admin.site.urls)),
